@@ -1,6 +1,6 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -18,6 +18,20 @@ def index_page():
 @app.route('/test')
 def test_page():
     return render_template('test.html')
+
+@app.route('/form', methods=['GET', 'POST'])
+def form_page():
+    if request.method == 'POST':
+        name = request.form['name']
+        gender = request.form['gender']
+        subscribe = request.form.get('subscribe', 'No')
+        country = request.form['country']
+
+        #option to process data here
+        print(name)
+        return render_template('result.html', name=name, gender=gender, subscribe=subscribe, country=country)
+
+    return render_template('uploadform.html')
 
 
 # main driver function
