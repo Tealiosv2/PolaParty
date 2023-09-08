@@ -1,6 +1,7 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
 from flask import Flask, render_template, request
+import os
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -23,15 +24,29 @@ def test_page():
 def form_page():
     if request.method == 'POST':
         name = request.form['name']
-        gender = request.form['gender']
-        subscribe = request.form.get('subscribe', 'No')
-        country = request.form['country']
+        date = request.form['date']
+        image = request.form.get('image')
+        description = request.form['description']
 
         #option to process data here
-        print(name)
-        return render_template('result.html', name=name, gender=gender, subscribe=subscribe, country=country)
+
+        return render_template('result.html', name=name, date=date, image=image, description=description)
 
     return render_template('uploadform.html')
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return "No file part"
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return "No selected file"
+
+    if file:
+        return "upload logic here"
 
 
 # main driver function

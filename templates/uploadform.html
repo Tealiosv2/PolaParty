@@ -8,35 +8,25 @@
 <body>
     <h2>Simple HTML Form</h2>
     
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" ><!-- action="/upload" -->
         <!-- Text Input -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <!-- Radio Buttons -->
-        <label>Gender:</label><br>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label><br>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label><br>
-        <input type="radio" id="other" name="gender" value="other">
-        <label for="other">Other</label><br><br>
+        <!-- Date Selector -->
+        <label>Date:</label><br>
+        <input type="date" id="date" name="date" required/><br><br>
 
-        <!-- Checkbox -->
-        <input type="checkbox" id="subscribe" name="subscribe" value="yes">
-        <label for="subscribe">Subscribe to Newsletter</label><br><br>
+        <!-- Image Uploader -->
+        <label for="file">Select a file:</label>
+        <input type="file" id="file" name="file" accept=".jpg, .png, .pdf" required>
+        
+        <!-- Description -->
+        <label for="description">Description:</label>
+        <textarea type="text" id="description" name="description" rows="4" cols="50"></textarea>
 
-        <!-- Select Dropdown -->
-        <label for="country">Country:</label>
-        <select id="country" name="country">
-            <option value="usa">USA</option>
-            <option value="canada">Canada</option>
-            <option value="uk">UK</option>
-            <option value="australia">Australia</option>
-        </select><br><br>
-
-        <!-- Submit Button -->
-        <input type="submit" value="Submit">
+        <!-- Upload Button -->
+        <input type="submit" value="Upload">
     </form>
 </body>
 </html>
