@@ -6,16 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Submitted Entries</h2>
+    <h2>Preview Submission</h2>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Description</th>
-        </tr>
-        <p>{{ entries[0] }}</p>
-        <img src='/static/uploads/{{ entries[1] }}' alt="User Image" width="204.48" height="326.4">
-    </table>
+    <!--entries is data in the packed into a list
+    entries[0] image name
+    entries[1] name
+    entries[2] description
+    entries[3] date-->
+
+    <img src='/static/uploads/{{ entries[0] }}' alt="User Image" width="204.48" height="326.4"><br><br>
+    <p>Name: {{ entries[1] }}</p>
+    <p>Descripstion: {{ entries[2] }}</p>
+    <p>Date: {{ entries[3] }}</p>
+    
+    <p></p>
+
+    <p>back to <a href='/'>home</a></p>
+
 </body>
 </html>

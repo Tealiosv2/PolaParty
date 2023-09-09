@@ -19,10 +19,6 @@ dummy_database = []
 def index_page():
     return render_template('index.html')
 
-@app.route('/test')
-def test_page():
-    return render_template('test.html')
-
 @app.route('/form', methods=['GET', 'POST'])
 def form_page():
     return render_template('uploadform.html')
@@ -31,8 +27,10 @@ def form_page():
 def submit_form():
     name = request.form['name']
     description = request.form['description']
+    date = request.form['date']
 
     #empties uploads folder
+    cleardummy()
     delete_uploads()
 
     # Handle image file upload
@@ -48,14 +46,18 @@ def submit_form():
         image_filename = None
 
     #save to database here
-    hold_onto(name, image_filename, description)
+    hold_onto(image_filename, name, description, date)
 
     return redirect(url_for('display_entries'))
 
-def hold_onto(name, image, description):
-    dummy_database.append(name)
+def hold_onto(image, name, description, date):
     dummy_database.append(image)
+    dummy_database.append(name)
     dummy_database.append(description)
+    dummy_database.append(date)
+
+def cleardummy():
+    dummy_database.clear()
 
 
 @app.route('/entires')
