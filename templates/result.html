@@ -6,11 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Form Submission Result</h2>
-    
-    <p>Name: {{ name }}</p>
-    <p>Date: {{ date }}</p>
-    <p>Image: nothing yet</p>
-    <p>Description: {{ description }}</p>
+    <h2>Submitted Entries</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Description</th>
+        </tr>
+        <p>{{ entries[0] }}</p>
+        <img src='/static/uploads/{{ entries[1] }}' alt="User Image" width="204.48" height="326.4">
+    </table>
 </body>
 </html>

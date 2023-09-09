@@ -1,12 +1,15 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import os
+import psycopg2
+from werkzeug.utils import secure_filename
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
 app = Flask(__name__)
 
+dummy_database = []
 
 # The route() function of the Flask class is a decorator,
 # which tells the application which URL should call
@@ -22,31 +25,53 @@ def test_page():
 
 @app.route('/form', methods=['GET', 'POST'])
 def form_page():
-    if request.method == 'POST':
-        name = request.form['name']
-        date = request.form['date']
-        image = request.form.get('image')
-        description = request.form['description']
-
-        #option to process data here
-
-        return render_template('result.html', name=name, date=date, image=image, description=description)
-
     return render_template('uploadform.html')
 
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    name = request.form['name']
+    description = request.form['description']
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return "No file part"
+    #empties uploads folder
+    delete_uploads()
 
-    file = request.files['file']
+    # Handle image file upload
+    if 'image' in request.files:
+        image_file = request.files['image']
+        if image_file.filename:
+            image_filename = secure_filename(image_file.filename)
+            image_path = os.path.join('static/uploads', image_filename)
+            image_file.save(image_path)
+        else:
+            image_filename = None
+    else:
+        image_filename = None
 
-    if file.filename == '':
-        return "No selected file"
+    #save to database here
+    hold_onto(name, image_filename, description)
 
-    if file:
-        return "upload logic here"
+    return redirect(url_for('display_entries'))
+
+def hold_onto(name, image, description):
+    dummy_database.append(name)
+    dummy_database.append(image)
+    dummy_database.append(description)
+
+
+@app.route('/entires')
+def display_entries():
+    return render_template('result.html', entries=dummy_database)
+
+def delete_uploads():
+    try:
+        for filename in os.listdir('static/uploads'):
+            file_path = os.path.join('static/uploads', filename)
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        return "Uploads folder contents deleted successfully"
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
+
 
 
 # main driver function
