@@ -14,15 +14,18 @@ dummy_database = []
 # The route() function of the Flask class is a decorator,
 # which tells the application which URL should call
 # the associated function.
+
+#routes to index
 @app.route('/')
-# ‘/’ URL is bound with hello_world() function.
 def index_page():
     return render_template('index.html')
 
+#routes to upload form
 @app.route('/form', methods=['GET', 'POST'])
 def form_page():
     return render_template('uploadform.html')
 
+#uploads data from form
 @app.route('/submit', methods=['POST'])
 def submit_form():
     name = request.form['name']
@@ -50,20 +53,23 @@ def submit_form():
 
     return redirect(url_for('display_entries'))
 
+#saves data in a dummy database
 def hold_onto(image, name, description, date):
     dummy_database.append(image)
     dummy_database.append(name)
     dummy_database.append(description)
     dummy_database.append(date)
 
+#clears dummy database
 def cleardummy():
     dummy_database.clear()
 
-
+#preview of data submitted on form
 @app.route('/entires')
 def display_entries():
     return render_template('result.html', entries=dummy_database)
 
+#clears uploads dir
 def delete_uploads():
     try:
         for filename in os.listdir('static/uploads'):
