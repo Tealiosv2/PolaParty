@@ -5,3 +5,7 @@ built using python, flask, postgres
 hosted on azure
 
 run ```main.py``` for development
+
+Dependencies:
+- flask
+- psycopg2
