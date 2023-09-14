@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+body {
+    background-color: black;
+}
+
+/* PolaParty Title */
+.pp {
+    font-family: 'Space Grotesk';
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    font-weight: 300;
+    font-size: 3.0em; /* 30px */
+    color: rgb(255, 255, 255);
+
+    text-align: center;
+}
+
+/* Each page section */
+.section-header {
+    margin: auto;
+    width: 90%;
+}
+
+.section-body {
+    margin: auto;
+    width: 90%;
+}
+
+p {
+    /* standard body font size */
+    font-size: 1em;
+    color: white;
+}
+
+.aboveBelow {
+    border-top: 1px dotted white;
+    border-bottom: 1px dotted white;
+}
+
+.slidingText {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 200;
+    /* height: 20px; */
+
+    white-space: nowrap;
+
+    overflow:hidden;
+
+    display: flex;
+    gap: 2em;
+}
+
+.RightToLeft {
+    margin: 0.3em;
+    animation: RightToLeft 45s infinite linear;
+}
+
+@keyframes RightToLeft {
+    from {
+        transform: translateX(90%)
+    }
+    to {
+        transform: translate(-100%);
+    }
+}
+
+#upload-p {
+    /* margin:auto; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    /* justify-content: center;
+    padding:auto; */
+}
+
+#upload {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 800;
+
+    user-select: none;
+    text-decoration: none;
+
+    color:white;
+    border: 1px dotted white;
+    /* background-color: white; */
+
+    padding-left: 3px;
+    padding-right: 3px;
+
+    text-align: center;
+
+    margin:auto;
+}
