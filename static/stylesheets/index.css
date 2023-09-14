@@ -1,17 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=IBM+Plex+Sans:wght@200;300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 body {
-    background-color: black;
+    background-color: rgb(221, 221, 221);
+    box-shadow: inset 2px 2px white, 2px 2px 0px 0px #898989;
+    padding-bottom: 20px;
+    /* overflow:hidden; */
 }
 
 /* PolaParty Title */
 .pp {
-    font-family: 'Space Grotesk';
+    /* font-family: 'Space Grotesk'; */
     /* font-family: 'IBM Plex Sans', sans-serif; */
-    font-weight: 300;
+    font-family: 'DotGothic16', sans-serif;
+    font-weight: 500;
     font-size: 3.0em; /* 30px */
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 
     text-align: center;
+}
+
+.navbar {
+    border: black;
+    box-shadow: inset 2px 2px white;
+    background-color: blue;
+    /* height: 20px; */
+
+    padding-left: 12px;
+    padding-right: 12px;
+
+    display:flex; 
+    /* flex-direction: column;
+    align-items: flex-start; */
+    /* justify-content: space-between; */
+    align-items: center;
+    gap:8px;
+}
+
+.navbar p { 
+    color:white;
+    font-family: 'DotGothic16', sans-serif;
+
+    margin-top:4px;
+    margin-bottom:4px;
+
+    text-align:left;
+    margin-right: auto;
+}
+
+.navbar div {
+
+    text-align: right;
 }
 
 /* Each page section */
@@ -20,48 +58,6 @@ body {
     width: 90%;
 }
 
-.section-body {
-    margin: auto;
-    width: 90%;
-}
-
-p {
-    /* standard body font size */
-    font-size: 1em;
-    color: white;
-}
-
-.aboveBelow {
-    border-top: 1px dotted white;
-    border-bottom: 1px dotted white;
-}
-
-.slidingText {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 200;
-    /* height: 20px; */
-
-    white-space: nowrap;
-
-    overflow:hidden;
-
-    display: flex;
-    gap: 2em;
-}
-
-.RightToLeft {
-    margin: 0.3em;
-    animation: RightToLeft 45s infinite linear;
-}
-
-@keyframes RightToLeft {
-    from {
-        transform: translateX(90%)
-    }
-    to {
-        transform: translate(-100%);
-    }
-}
 
 #upload-p {
     /* margin:auto; */
@@ -74,20 +70,22 @@ p {
 }
 
 #upload {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 800;
+    font-family: 'DotGothic16', sans-serif;
 
     user-select: none;
     text-decoration: none;
 
-    color:white;
-    border: 1px dotted white;
+    color: rgb(0, 0, 0);
+    background-color: rgb(221, 221, 221);
+    border: 1px solid rgb(0, 0, 0);
     /* background-color: white; */
 
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
 
     text-align: center;
 
     margin:auto;
+
+    box-shadow: inset 2px 2px white, 2px 2px 0px 0px #000000;
 }
