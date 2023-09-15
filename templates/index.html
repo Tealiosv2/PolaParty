@@ -3,11 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel=’styleSheet” href='/css/index.css'>
+    <link rel="stylesheet" href='/static/stylesheets/index.css'>
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+
+    <!-- <link href="
+        https://cdn.jsdelivr.net/npm/interactjs@1.10.18/dist/api/styles/jsdoc-default.min.css" rel="stylesheet"> -->
+
     <title>Document</title>
 </head>
 <body>
-    <p>Aloha World!</p><br><br>
-    <p><a href='/form'>Upload</a></p>
+    <div class="window master">
+        <div class="navbar">
+            <p class="fakeBold">PolaParty Client</p>
+            <div><p>_</p></div>
+            <div><p>□</p></div>
+            <div><p>X</p></div>
+        </div>
+
+        <div class="subbar">
+            <p><u>F</u>ile</p>
+            <p><u>E</u>dit</p>
+            <p><u>V</u>iew</p>
+        </div>
+
+        <div class="section-header">
+            <h1 class="pp">PolaParty</h1>  
+            <p>By xegativ and Tealios</p>
+        </div>
+
+
+        <div class="section-body">
+            <p id="upload-p"><a href='/form' id="upload">Upload</a></p>
+        </div>
+
+        <div class="hAlign">
+            <div class="window draggable" id="w-chat">
+                <div class="navbar">
+                    <p class="fakeBold">Chat</p>
+                    <div><p>_</p></div>
+                    <div><p>□</p></div>
+                    <div><p>X</p></div>
+                    
+                </div>
+                <div class="subbar">
+                    <p><u>N</u>ew</p>
+                    <p><u>F</u>riends</p>
+                    <p><u>H</u>elp</p>
+                </div>
+
+                <div class="chatBox"></div>
+
+                
+                <input type="text" id="chattext" name="chattext" required><br><br>
+                <input type="submit" id="chatsubmit" value="Send">
+                
+                
+            </div>
+
+            <div class="window draggable" id="w-desc">
+                <div class="navbar">
+                    <p class="fakeBold">Description</p>
+                    <div><p>_</p></div>
+                    <div><p>□</p></div>
+                    <div><p>X</p></div>
+                    
+                </div>
+                
+                <div>
+                    <p class="description">Chicekn</p>
+                </div>
+
+            </div>
+
+            <div class="window draggable" id="w-img">
+                <div class="navbar">
+                    <p class="fakeBold">Image Viewer</p>
+                    <div><p>_</p></div>
+                    <div><p>□</p></div>
+                    <div><p>X</p></div>
+                    
+                </div>
+                <div class="subbar">
+                    <p><u>F</u>ile</p>
+                    <p><u>E</u>dit</p>
+                    <p><u>H</u>elp</p>
+                </div>
+
+                <div class="chatBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const position = { x: 0, y: 0 }
+
+        interact('.draggable').draggable({
+          listeners: {
+            start (event) {
+              console.log(event.type, event.target)
+            },
+            move (event) {
+              position.x += event.dx
+              position.y += event.dy
+        
+              event.target.style.transform =
+                `translate(${position.x}px, ${position.y}px)`
+            },
+          }
+        })</script>
+    
 </body>
 </html>
