@@ -2,13 +2,19 @@
 
 body {
     background-color: rgb(112, 181, 172);
-    box-shadow: inset 2px 2px white, 2px 2px 0px 0px #898989;
+    
     /* overflow:hidden; */
 }
 
 .window {
+    box-shadow: inset 2px 2px white, 2px 2px 0px 0px #898989;
     background-color: rgb(221, 221, 221);
     padding-bottom: 20px;
+}
+
+.master {
+    height: 90vh;
+    overflow: hidden;
 }
 
 /* PolaParty Title */
@@ -16,11 +22,13 @@ body {
     /* font-family: 'Space Grotesk'; */
     /* font-family: 'IBM Plex Sans', sans-serif; */
     font-family: 'DotGothic16', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 3.0em; /* 30px */
     color: rgb(0, 0, 0);
 
     text-align: center;
+
+    margin-bottom: 0px;
 }
 
 .navbar {
@@ -40,6 +48,10 @@ body {
     gap:8px;
 }
 
+.fakeBold {
+    text-shadow:1px 0 0 white,1px 0 0 white
+}
+
 .navbar p { 
     color:white;
     font-family: 'DotGothic16', sans-serif;
@@ -56,10 +68,28 @@ body {
     text-align: right;
 }
 
+.subbar {
+    display:flex;
+    align-items: center;
+    /* padding-left: 12px; */
+}
+
+.subbar p {
+    margin-top: 5px;
+    padding-left: 12px;
+    font-family: 'DotGothic16', sans-serif;
+}
+
 /* Each page section */
 .section-header {
     margin: auto;
     width: 90%;
+}
+
+.section-header p {
+    margin-top: 0px;
+    font-family: 'DotGothic16', sans-serif;
+    text-align: center;
 }
 
 
@@ -93,3 +123,64 @@ body {
 
     box-shadow: inset 2px 2px white, 2px 2px 0px 0px #000000;
 }
+
+#w-chat {
+    width: 20%;
+    margin-left: 50px;
+    min-width: 200px;
+}
+
+#w-desc {
+    width: 30%;
+    min-width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#w-img {
+    width: 20%;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-width: 200px;
+}
+
+.chatBox {
+    background-color: white;
+    box-shadow: inset 2px 2px #898989;
+    height: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.hAlign {
+    display: flex;
+}
+
+.description {
+    padding-left: 12px;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+#chattext {
+    margin-top: 5px;
+    margin-right: 12px;
+    float: right;
+}
+
+#chatsubmit {
+    margin: 0px;
+    margin-right: 12px;
+    float: right;
+}
+
+.draggable {
+    /* width: 25%;
+    min-height: 6.5em;
+    margin: 1rem 0 0 1rem;
+    background-color: #29e;
+    color: white;
+    border-radius: 0.75em;
+    padding: 4%; */
+    touch-action: none;
+    user-select: none;
+  }
