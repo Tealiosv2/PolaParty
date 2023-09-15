@@ -165,12 +165,14 @@ body {
     margin-top: 5px;
     margin-right: 12px;
     float: right;
+    font-family: 'DotGothic16', sans-serif;
 }
 
 #chatsubmit {
     margin: 0px;
     margin-right: 12px;
     float: right;
+    font-family: 'DotGothic16', sans-serif;
 }
 
 .draggable {
