@@ -11,3 +11,4 @@ for development
 Dependencies:
 - flask
 - psycopg2
+- PIL
