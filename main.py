@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 import psycopg2
 from werkzeug.utils import secure_filename
+from backend import database_operations
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -80,7 +81,10 @@ def delete_uploads():
     except Exception as e:
         return f"An error occurred: {str(e)}"
 
-
+@app.route('/display')
+def display():
+    records = database_operations.db_read()
+    return render_template('display.html', records=records)
 
 # main driver function
 if __name__ == '__main__':

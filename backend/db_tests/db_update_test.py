@@ -21,8 +21,8 @@ try:
         """
 
     # Define the values for the update
-    new_value1 = "dogs"  # Replace with the new value for column1
-    new_value2 = "doggert"  # Replace with the new value for column2
+    new_value1 = "doggggy"  # Replace with the new value for column1
+    new_value2 = "doggy"  # Replace with the new value for column2
     row_id_to_update = 1  # Replace with the specific row ID or condition
 
     # Execute the update query

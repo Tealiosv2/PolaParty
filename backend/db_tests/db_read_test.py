@@ -28,8 +28,10 @@ try:
 
     image = Image.open(BytesIO(image_data))
 
-    # saves the image
-    # image.save("testpic.jpg")
+    # saves the image to directory
+    # output_dir = "../static/saved"
+    # img_name = f"{records[0][2]}{records[0][0]}.jpg"
+    # image.save(f"{output_dir}/{img_name}")
 
     # image will open
     # image.show()
