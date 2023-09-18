@@ -1,0 +1,21 @@
+1) install docker hub
+2) create account
+
+in terminal
+3)docker pull postgres
+4)docker run --name polaparty -e POSTGRES_PASSWORD=parade -d -p 5432:5432 postgres
+//check if it is running
+5)docker ps
+//enter exec mode where you can query
+6)docker exec -it polaparty psql -U postgres
+7)CREATE TABLE polaroids (
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    name VARCHAR(255),
+    description TEXT,
+    date DATE,
+    image BYTEA
+);
+//view the table
+8)\dt
+
