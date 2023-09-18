@@ -1,7 +1,7 @@
 # PolaParty
 A web application that catalogues polaroid pictures
 
-built using python, flask, postgres
+backend uses python, flask, postgreSQL
 hosted on azure
 
 run 
@@ -11,3 +11,4 @@ for development
 Dependencies:
 - flask
 - psycopg2
+- PIL
