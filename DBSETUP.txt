@@ -19,3 +19,15 @@ in terminal
 //view the table
 8)\dt
 
+everytime you want to test stuff run docker container
+
+for database params
+database: postgres
+user: postgres
+password : parade
+
+for queries
+table: polaroids
+
+
+

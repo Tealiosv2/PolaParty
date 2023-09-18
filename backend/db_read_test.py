@@ -28,7 +28,11 @@ try:
 
     image = Image.open(BytesIO(image_data))
 
-    image.show()
+    # saves the image
+    # image.save("testpic.jpg")
+
+    # image will open
+    # image.show()
 
     connection.close()
 

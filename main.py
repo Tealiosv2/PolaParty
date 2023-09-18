@@ -11,16 +11,6 @@ app = Flask(__name__)
 
 dummy_database = []
 
-db_params = {
-    "host": "localhost",          # Replace with your Docker container's hostname or IP address
-    "database": "polaparty",      # Replace with your database name
-    "user": "wymanng",          # Replace with your database user
-    "password": "parade"  # Replace with your database password
-}
-
-
-
-
 # The route() function of the Flask class is a decorator,
 # which tells the application which URL should call
 # the associated function.
