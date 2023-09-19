@@ -3,6 +3,7 @@ from PIL import Image
 from io import BytesIO
 import base64
 
+
 def connect():
     try:
         connection = psycopg2.connect(
@@ -21,6 +22,11 @@ def connect():
         print("Error connecting to the database:", e)
 
 
+def read_image_file(file_path):
+    with open(file_path, 'rb') as file:
+        return file.read()
+
+
 def db_read():
     connection = connect()
     cursor = connection.cursor()
@@ -32,7 +38,6 @@ def db_read():
     records = []
 
     for row in cursor.fetchall():
-
         image64 = base64.b64encode(row[5]).decode('utf-8')
 
         record = {
@@ -48,3 +53,20 @@ def db_read():
     connection.close()
 
     return records
+
+
+def db_write(userid, name, description, date, image_path):
+    connection = connect()
+
+    cursor = connection.cursor()
+
+    insert_query = "INSERT INTO polaroids (user_id, name, description, date, image) VALUES (%s, %s, %s, %s, %s)"
+
+    values = (userid, name, description, date, read_image_file(image_path))
+
+    cursor.execute(insert_query, values)
+
+    # Commit the transaction
+    connection.commit()
+
+    connection.close()

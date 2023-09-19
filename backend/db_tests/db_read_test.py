@@ -21,12 +21,12 @@ try:
     # Fetch all the rows returned by the query
     records = cursor.fetchall()
 
-    print(records[0][2])
+    # print(records[0][2])
     print(records)
 
-    image_data = records[0][5]
+    # image_data = records[0][5]
 
-    image = Image.open(BytesIO(image_data))
+    # image = Image.open(BytesIO(image_data))
 
     # saves the image to directory
     # output_dir = "../static/saved"

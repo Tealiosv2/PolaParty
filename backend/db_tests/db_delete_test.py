@@ -12,7 +12,7 @@ try:
     cursor = connection.cursor()
 
     # DELETE all rows from the "your_table_name" table
-    delete_query = "DELETE FROM polaroids WHERE id = 2"
+    delete_query = "DELETE FROM polaroids WHERE id = 7"
     cursor.execute(delete_query)
 
     # Commit the transaction

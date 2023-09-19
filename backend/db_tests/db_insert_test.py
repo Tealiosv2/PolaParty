@@ -1,11 +1,10 @@
 import psycopg2
 
-import psycopg2
-
 
 def read_image_file(file_path):
     with open(file_path, 'rb') as file:
         return file.read()
+
 
 try:
     # Establish a connection to the PostgreSQL database
@@ -22,9 +21,7 @@ try:
     # Insert a record into the "polaroids" table
     insert_query = "INSERT INTO polaroids (user_id, name, description, date, image) VALUES (%s, %s, %s, %s, %s)"
 
-
-
-    values = (1, "doggy", "Portuguese water dog", "2020-03-18", read_image_file("../static/uploads/waterdog.jpg"))
+    values = (1, "doggy", "Portuguese water dog", "2020-03-18", read_image_file("../../static/uploads/waterdog.jpg"))
 
     cursor.execute(insert_query, values)
 
@@ -37,7 +34,7 @@ try:
 
     # Fetch and print the results
     records = cursor.fetchall()
-    records[0]
+    print(records)
 
     connection.close()
 

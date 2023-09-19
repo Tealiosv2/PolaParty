@@ -10,65 +10,47 @@ from backend import database_operations
 # current module (__name__) as argument.
 app = Flask(__name__)
 
-dummy_database = []
 
 # The route() function of the Flask class is a decorator,
 # which tells the application which URL should call
 # the associated function.
 
-#routes to index
+# routes to index
 @app.route('/')
 def index_page():
+    delete_uploads()
     return render_template('index.html')
 
-#routes to upload form
-@app.route('/form', methods=['GET', 'POST'])
-def form_page():
-    return render_template('uploadform.html')
 
-#uploads data from form
-@app.route('/submit', methods=['POST'])
-def submit_form():
-    name = request.form['name']
-    description = request.form['description']
-    date = request.form['date']
+@app.route('/display')
+def display():
+    records = database_operations.db_read()
+    return render_template('display.html', records=records)
 
-    #empties uploads folder
-    cleardummy()
-    delete_uploads()
+@app.route('/form')
+def show_form():
+    return render_template('form.html')
 
-    # Handle image file upload
-    if 'image' in request.files:
-        image_file = request.files['image']
-        if image_file.filename:
-            image_filename = secure_filename(image_file.filename)
-            image_path = os.path.join('static/uploads', image_filename)
-            image_file.save(image_path)
-        else:
-            image_filename = None
-    else:
-        image_filename = None
+@app.route('/upload', methods=['POST'])
+def upload():
+    if request.method == 'POST':
+        # Access form data
+        name = request.form['name']
+        date = request.form['date']
+        description = request.form['description']
 
-    #save to database here
-    hold_onto(image_filename, name, description, date)
+        # Handle uploaded image
+        if 'image' in request.files:
+            image = request.files['image']
+            if image.filename:
 
-    return redirect(url_for('display_entries'))
+                image.save('static/uploads/' + image.filename)
+                database_operations.db_write(1, name, description, date, ('static/uploads/' + image.filename))
 
-#saves data in a dummy database
-def hold_onto(image, name, description, date):
-    dummy_database.append(image)
-    dummy_database.append(name)
-    dummy_database.append(description)
-    dummy_database.append(date)
+        # Do something with the form data, e.g., store it in a database
 
-#clears dummy database
-def cleardummy():
-    dummy_database.clear()
+        return redirect(url_for('index_page'))
 
-#preview of data submitted on form
-@app.route('/entires')
-def display_entries():
-    return render_template('result.html', entries=dummy_database)
 
 #clears uploads dir
 def delete_uploads():
@@ -80,11 +62,6 @@ def delete_uploads():
         return "Uploads folder contents deleted successfully"
     except Exception as e:
         return f"An error occurred: {str(e)}"
-
-@app.route('/display')
-def display():
-    records = database_operations.db_read()
-    return render_template('display.html', records=records)
 
 # main driver function
 if __name__ == '__main__':
