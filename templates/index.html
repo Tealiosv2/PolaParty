@@ -11,7 +11,7 @@
 
     <title>Document</title>
 </head>
-<body>
+<body>  
     <div class="window master">
         <div class="navbar">
             <p class="fakeBold">PolaParty Client</p>
@@ -31,10 +31,12 @@
             <p>By xegativ and Tealios</p>
         </div>
 
-
         <div class="section-body">
             <p id="upload-p"><a href='/form' id="upload">Upload</a></p>
         </div>
+
+
+        <div class="background"></div>
 
         <div class="hAlign">
             <div class="window draggable" id="w-chat">
@@ -56,7 +58,6 @@
                 
                 <input type="text" id="chattext" name="chattext" required><br><br>
                 <input type="submit" id="chatsubmit" value="Send">
-                
                 
             </div>
 
@@ -98,7 +99,16 @@
         const position = { x: 0, y: 0 }
 
         interact('.draggable').draggable({
-          listeners: {
+            // modifiers: [
+            //     interact.modifiers.restrict({
+            //     restriction:document.getElementsByClassName("subbar"),
+            //     endOnly: true
+            //     })
+            // ],
+
+            allowFrom: '.navbar',
+        
+            listeners: {
             start (event) {
               console.log(event.type, event.target)
             },

@@ -14,7 +14,9 @@ body {
 
 .master {
     height: 90vh;
+    width: 50%;
     overflow: hidden;
+    margin: auto;
 }
 
 /* PolaParty Title */
@@ -152,9 +154,30 @@ body {
     margin-right: 10px;
 }
 
+.background {
+    width: 48%;
+    height: 400px;
+    box-shadow: inset 2px 2px #898989;
+
+    top:150px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    background-color: white;
+    position: absolute;
+    z-index: 0;
+}
+
 .hAlign {
+    position: absolute;
+    z-index: 1;
     display: flex;
 }
+
+
 
 .description {
     padding-left: 12px;
@@ -185,4 +208,4 @@ body {
     padding: 4%; */
     touch-action: none;
     user-select: none;
-  }
+}
