@@ -1,6 +1,5 @@
 import psycopg2
-from PIL import Image
-from io import BytesIO
+
 
 
 try:

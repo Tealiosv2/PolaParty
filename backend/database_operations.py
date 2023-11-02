@@ -55,14 +55,15 @@ def db_read():
     return records
 
 
-def db_write(userid, name, description, date, image_path):
+def db_write(userid, name, description, date, image_path, R, G, B):
     connection = connect()
 
     cursor = connection.cursor()
 
-    insert_query = "INSERT INTO polaroids (user_id, name, description, date, image) VALUES (%s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO polaroids (user_id, name, description, date, image, R, G, B) " \
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
-    values = (userid, name, description, date, read_image_file(image_path))
+    values = (userid, name, description, date, read_image_file(image_path), R, G, B)
 
     cursor.execute(insert_query, values)
 

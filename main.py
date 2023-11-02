@@ -2,9 +2,8 @@
 # An object of Flask class is our WSGI application.
 from flask import Flask, render_template, request, redirect, url_for
 import os
-import psycopg2
-from werkzeug.utils import secure_filename
 from backend import database_operations
+from PIL import Image
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -39,13 +38,22 @@ def upload():
         date = request.form['date']
         description = request.form['description']
 
+
         # Handle uploaded image
         if 'image' in request.files:
             image = request.files['image']
             if image.filename:
+                image_path = 'static/uploads/' + image.filename
 
-                image.save('static/uploads/' + image.filename)
-                database_operations.db_write(1, name, description, date, ('static/uploads/' + image.filename))
+                image.save(image_path)
+
+                img = Image.open(image_path)
+                average_color = img.convert('RGB').resize((1, 1)).getpixel((0, 0))
+                average_r, average_g, average_b = average_color
+
+                # need to change 1 to user id
+                database_operations.db_write(1, name, description, date, image_path, average_r, average_g, average_b)
+
 
         # Do something with the form data, e.g., store it in a database
 
